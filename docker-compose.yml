@@ -1,0 +1,9 @@
+services:
+  discord-bot:
+    build: ./discord-bot
+    entrypoint: |
+      bash -c 'nodemon -L --exec ruby bot.rb'
+    volumes:
+      - ./discord-bot:/bot
+    environment:
+      - DISCORD_BOT_TOKEN
