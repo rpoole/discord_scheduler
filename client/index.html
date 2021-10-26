@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
-  <title>title</title>
+  <!--Needs better description-->
+  <meta name="description" content="Stackly is a game scheduling bot for Discord.">
+  <meta name="viewport" content="initial-scale=1, width=device-width"/>
+  <title>Stackly</title>
+  <link href="styles.css" rel="stylesheet"/>
+  <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+  <!-- [if lt IE 9]
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  [endif] -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
+
 <body>
-hi2
+
+  <header>
+    <div class="header-content">
+
+      <a href="#" class="header-logo" ><object id="logo" data="logo.svg" type="image/svg+xml"></object></a>
+
+      <!-- Use media query and javascript for mobile menu toggle -->
+      <ul class="links">
+        <li> <a href="https://github.com/rpoole/discord_scheduler" class="menu-link" target="_blank">Github</a></li>
+        <!-- Change to seperate contact.html form -->
+        <li> <a href="mailto:example@gmail.com" class="menu-link" target="_blank">Contact</a></li>
+      </ul>
+
+    </div>
+  </header>
+
+  <main role="main">
+
+  <!-- Unfinished -->
+  <div class="top-container">
+    <img src="schedule_person.svg">
+    <button>
+      <!-- <img src="Discord-Logo-White.png"> -->
+      Add to your Discord
+    </button>
+  </div>
+
+  <div class="centered-text">
+    1. Add stackly to your server using the link above
+  </div>
+
+  <div class="centered-text">
+    2. Provide stackly with the game, time, and minimum players
+    <img id="splash_img_1" src="splash_img_1.png">
+  </div>
+
+  <div class="centered-text">
+    3. Stackly will let you know when your game is ready!
+    <img id="splash_img_2" src="splash_img_2.png">
+  </div>
+
+  </main>
+  <script src="scripts.js"></script>
 </body>
 </html>
