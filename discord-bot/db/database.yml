@@ -1,0 +1,7 @@
+default: &default
+  pool: 5
+  adapter: sqlite3
+
+development:
+  <<: *default  
+  database: './db/bot.db'

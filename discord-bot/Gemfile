@@ -1,3 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'activerecord'
+gem 'chronic'
 gem 'discordrb'
+gem 'rake'
+gem 'sqlite3'

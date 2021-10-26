@@ -1,31 +1,97 @@
 # frozen_string_literal: true
 
-# This simple bot responds to every "Ping!" message with a "Pong!"
-
 require 'discordrb'
+require 'chronic'
+require_relative 'db/models'
 
-# This statement creates a bot with the specified token and application ID. After this line, you can add events to the
-# created bot, and eventually run it.
-#
-# If you don't yet have a token to put in here, you will need to create a bot account here:
-#   https://discord.com/developers/applications
-# If you're wondering about what redirect URIs and RPC origins, you can ignore those for now. If that doesn't satisfy
-# you, look here: https://github.com/discordrb/discordrb/wiki/Redirect-URIs-and-RPC-origins
-# After creating the bot, simply copy the token (*not* the OAuth2 secret) and put it into the
-# respective place.
-bot = Discordrb::Bot.new token: ENV['DISCORD_BOT_TOKEN']
+bot = Discordrb::Commands::CommandBot.new token: ENV['DISCORD_BOT_TOKEN'], prefix: '!'
 
-# Here we output the invite URL to the console so the bot account can be invited to the channel. This only has to be
-# done once, afterwards, you can remove this part if you want
-puts "This bot's invite URL is #{bot.invite_url}."
-puts 'Click on it to invite it to your server.'
+bot.command(:stackly, min_args: 2) do |bot_event, *args|
+  event_and_needed_players = args[0]
+  event_time = Chronic.parse(args[1..].join(" ")).to_i
 
-# This method call adds an event handler that will be called on any message that exactly contains the string "Ping!".
-# The code inside it will be executed, and a "Pong!" response will be sent to the channel.
-bot.message(content: 'Ping') do |event|
-  event.respond 'Pong!'
+  needed_players = 0
+  if event_and_needed_players.include? ":"
+    name, needed_players = event_and_needed_players.split(":")
+  else
+    name = event_and_needed_players
+  end
+
+  ActiveRecord::Base.transaction do
+    created_event = Event.create(
+      created_by_discord_user_id: bot_event.user.id,
+      discord_server_id: bot_event.server.id,
+      start_time: event_time,
+      name: name,
+      required_players: needed_players
+    )
+
+    created_event.event_players.create(
+      discord_user_id: bot_event.user.id
+    )
+
+    bot_event.channel.send_embed(&created_event.method(:to_discord_embed))
+  end
 end
 
-# This method call has to be put at the end of your script, it is what makes the bot actually connect to Discord. If you
-# leave it out (try it!) the script will simply stop and the bot will not appear online.
+bot.command(:events, max_args: 0) do |bot_event|
+  events = Event.where(discord_server_id: bot_event.server.id).order(created_at: :desc)
+
+  return "No events to show" if events.empty?
+
+  events.each do |event|
+    bot_event.channel.send_embed(&event.method(:to_discord_embed))
+  end
+
+  nil
+end
+
+bot.command(:join, min_args: 1, max_args: 1) do |bot_event, event_id|
+  event_player = EventPlayer.create(
+    event_id: event_id,
+    discord_user_id: bot_event.user.id
+  )
+
+  return "Unable to join event: #{event_player.errors.full_messages.join(',')}" unless event_player.valid?
+
+  bot_event.channel.send_embed(&event_player.event.method(:to_discord_embed))
+end
+
+bot.command(:delete, min_args: 1, max_args: 1) do |bot_event, event_id|
+  deleted_count = Event.delete_by(
+    created_by_discord_user_id: bot_event.user.id,
+    id: event_id,
+    discord_server_id: bot_event.server.id
+  )
+
+  if deleted_count.zero?
+    created_by_discord_user_id = Event.where(id: event_id).pluck(:created_by_discord_user_id).first
+    if !created_by_discord_user_id.nil? && created_by_discord_user_id != bot_event.user.id
+      return "You must be the event creator to delete"
+    end
+  end
+
+  return "Unable to delete event" if deleted_count.zero?
+
+  return "Deleted event #{event_id}"
+end
+
+bot.command(:leave, min_args: 1, max_args: 1) do |bot_event, event_id|
+  deleted_count = EventPlayer.delete_by(
+    event_id: event_id,
+    discord_user_id: bot_event.user.id
+  )
+
+  if deleted_count.zero?
+    user_attending_event = EventPlayer.where(id: event_id, discord_user_id: bot_event.user.id).exists?
+
+    return "Unable to leave event you have not joined" unless user_attending_event
+  end
+
+  return "Unable to leave event #{event_id}" unless deleted_count == 1
+
+  event = Event.find(event_id)
+  bot_event.channel.send_embed(&event.method(:to_discord_embed))
+end
+
 bot.run
