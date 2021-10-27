@@ -1,5 +1,5 @@
 html {
-    font-size:15px;
+    font-size:16px;
 }
 
 body {
@@ -11,29 +11,10 @@ body {
     line-height:1.6;
     margin: 0;
     padding: 0;
-    font-size: 1rem;
-}
-
-@media screen and (min-width:768px){
-    html {
-        font-size:16px;
-    }
-}
-
-@media screen and (min-width:1200px){
-    html {
-        font-size:18px;
-    }
-}
-
-@media screen and (min-width:1600px){
-    html {
-        font-size:20px;
-    }
 }
 
 header {
-    max-height: 112px;
+    height: 112px;
     background-color: #53bc4a;
 }
 
@@ -63,10 +44,15 @@ header {
     overflow: hidden;
 }
 
-.header-logo {
-    width: 80%;
+.header-logo {  
+    display: block;
+    width: 70%;
     max-width: 423px;
     margin-left: 5%;
+}
+
+#logo {
+    width: 100%;
 }
 
 .links {
@@ -112,32 +98,30 @@ header {
     -ms-flex-wrap: wrap-reverse;
     flex-wrap: wrap-reverse;
     width: 90%;
-    margin: 0.75rem auto 0 auto;
-    padding: 5px;
+    margin: 1.5rem auto 0 auto;
+    overflow: hidden;
 }
 
 .top-container img {
-    margin: 5px;
-    max-width: 75%;
+    width: 50%;
+    max-width: 532.48px;
+    transform: translateY(15%);
+    margin: auto 1.5rem auto 1.5rem;
 }
 
 button {
     font-family: 'Roboto Mono', monospace;
-    background:#5764f1 url("Discord-Logo-White.png") no-repeat top left;
-    background-size: 71px 80px;
+    background:#5764f1 url("Discord-Logo-White.png") no-repeat center left 0.75rem;
+    background-size: auto 3.5rem;
     color: #ffffff;
-    font-size:1rem;
+    font-size: 1rem;
     background-color: #5764f1;
     border:none;
-    border-radius: 3px;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-align: center;
-    padding-left: 71px;
-}
-
-button img {
-    height: 75%;
+    border-radius: 5px;
+    margin: auto 1.5rem auto 1.5rem;
+    line-height: 3.5rem;
+    padding: 0 0.75rem 0 4.5rem;
+    box-shadow: #434ec5 0px 7px 5px -6px;
 }
 
 .centered-text {
@@ -147,7 +131,7 @@ button img {
     margin: 0 auto 2rem auto;
     background-color: #53bc4a;
     text-align: center;
-    box-shadow: #1c4d17 0px 7px 5px -6px;
+    box-shadow: #33852b 0px 7px 5px -6px;
 }
 
 .centered-text img {
@@ -165,3 +149,30 @@ button img {
     max-width: 743px;
 }
 
+.is-hidden {
+    display: none;
+}
+
+@media screen and (max-width:768px){
+    .links {
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px){
+    html {
+        font-size:16px;
+    }
+}
+
+@media screen and (min-width:1200px){
+    html {
+        font-size:18px;
+    }
+}
+
+@media screen and (min-width:1600px){
+    html {
+        font-size:20px;
+    }
+}
