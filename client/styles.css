@@ -45,27 +45,9 @@ header {
 }
 
 .header-logo {  
-    display: inline-block;
-    position: relative;
     width: 70%;
-    height: 112px;
-    max-width: 423px;
-    margin-left: 5%;
-    z-index: 1;
-}
-
-.header-logo span {
-    display: inline-block;
     height: 100%;
-}
-
-#logo {
-    /* width: 100%; */
-    width: 70%;
-    height: 112px;
     max-width: 423px;
-    /* position: relative; */
-    /* z-index: -1; */
     margin-left: 5%;
 }
 
