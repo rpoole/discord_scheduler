@@ -145,16 +145,6 @@ button {
     max-width: 743px;
 }
 
-.is-hidden {
-    display: none;
-}
-
-@media screen and (max-width:768px){
-    .links {
-        display: none;
-    }
-}
-
 @media screen and (min-width:768px){
     html {
         font-size:16px;
