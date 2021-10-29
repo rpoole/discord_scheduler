@@ -7,9 +7,9 @@
   <title>Stackly</title>
   <link href="styles.css" rel="stylesheet"/>
   <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
-  <!-- [if lt IE 9]
+  <!-- [if lt IE 9] -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-  [endif] -->
+  <!-- [endif] -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
 </head>
 
@@ -17,18 +17,20 @@
 
   <header>
     <div class="header-content">
-      
       <a href="#" class="header-logo" >
         <span>
           <object id="logo" data="logo.svg" type="image/svg+xml"></object>
         </span>
       </a>
-
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
       <ul class="links">
         <li> <a href="https://github.com/rpoole/discord_scheduler" class="menu-link" target="_blank">Github</a></li>
         <li> <a href="mailto:example@gmail.com" class="menu-link" target="_blank">Contact</a></li>
       </ul>
-
     </div>
   </header>
 
@@ -40,24 +42,21 @@
       Add to your Discord
     </button>
   </div>
-
   <div class="centered-text">
     1. Add stackly to your server using the link above
   </div>
-
   <div class="centered-text">
     2. Provide stackly with the game, time, and minimum players
     <img id="splash_img_1" src="splash_img_1.png">
   </div>
-
   <div class="centered-text">
     3. Stackly will let you know when your game is ready!
     <img id="splash_img_2" src="splash_img_2.png">
   </div>
-
   </main>
 
-  <!-- <script src="scripts.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="scripts.js"></script>
 
 </body>
 </html>

@@ -13,6 +13,7 @@ body {
     padding: 0;
 }
 
+/* HEADER BAR */
 header {
     height: 112px;
     background-color: #53bc4a;
@@ -89,6 +90,46 @@ header {
     color: rgb(234, 234, 22);
 }
 
+/* MOBILE NAVIGATION */
+.menu-toggle .bar{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(234, 234, 22);
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+ 
+.menu-toggle {
+    justify-self: end;
+    margin-right: 25px;
+    display: none;
+  }
+  
+.menu-toggle:hover{
+    cursor: pointer;
+}
+  
+#mobile-menu.is-active .bar:nth-child(2){
+    opacity: 0;
+}
+  
+#mobile-menu.is-active .bar:nth-child(1){
+    -webkit-transform: translateY(8px) rotate(45deg);
+    -ms-transform: translateY(8px) rotate(45deg);
+    -o-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+}
+  
+#mobile-menu.is-active .bar:nth-child(3){
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    -ms-transform: translateY(-8px) rotate(-45deg);
+    -o-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* SCHEDULE PERSON AND BUTTON */
 .top-container {
     display: -webkit-box;
     display: -moz-box;
@@ -135,6 +176,7 @@ button {
     box-shadow: #434ec5 0px 7px 5px -6px;
 }
 
+/* TEXT */
 .centered-text {
     display: block;
     width: 90%;
@@ -160,6 +202,7 @@ button {
     max-width: 743px;
 }
 
+/* MEDIA QUERIES */
 @media screen and (min-width:768px){
     html {
         font-size:16px;
@@ -175,5 +218,38 @@ button {
 @media screen and (min-width:1600px){
     html {
         font-size:20px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        justify-content: start;
+        top: 112px;
+        background-color: #53bc4a;
+        width: 100%;
+        height: calc(100vh - 112px);
+        transform: translate(-101%);
+        transition: transform 0.7s ease-in-out;
+        text-align: center;
+        overflow: hidden;
+        z-index: 1;
+        margin: 0;
+        padding: 0;
+      }
+
+    #mobile-menu, .bar {
+        display: block;
+        cursor: pointer;
+      }
+      
+    .mobile-nav {
+      transform: translate(0%)!important;
+    }
+
+    .menu-link:hover {
+        color: #ffffff;
     }
 }
