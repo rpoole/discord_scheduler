@@ -29,34 +29,46 @@
       </div>
       <ul class="links">
         <li> <a href="https://github.com/rpoole/discord_scheduler" class="menu-link" target="_blank">Github</a></li>
-        <li> <a href="mailto:example@gmail.com" class="menu-link" target="_blank">Contact</a></li>
+        <li class="menu-link" id="contact">Contact</li>
       </ul>
     </div>
   </header>
 
   <main>
+    <div id="contact-container">
+      <div id="contact-form">
+        <h1>Contact Us</h1>
+        <form action="#">
+          <input class="contact-input" placeholder="Name" type="text" required />
+          <input class="contact-input" placeholder="Email" type="email" required />
+          <input class="contact-input" placeholder="Subject" type="text" required />
+          <textarea class="contact-input" placeholder="Comment"></textarea>
+          <input class="contact-input" type="submit" />
+        </form>
+        <span id="contact-close">╳</span>
+      </div>
+    </div>
+    <div class="top-container">
+      <img src="schedule_person.svg">
+      <button>
+        Add to your Discord
+      </button>
+    </div>
+    <div class="centered-text">
+      1. Add stackly to your server using the link above
+    </div>
+    <div class="centered-text">
+      2. Provide stackly with the game, time, and minimum players
+      <img id="splash_img_1" src="splash_img_1.png">
+    </div>
+    <div class="centered-text">
+      3. Stackly will let you know when your game is ready!
+      <img id="splash_img_2" src="splash_img_2.png">
+    </div>
+    </main>
 
-  <div class="top-container">
-    <img src="schedule_person.svg">
-    <button>
-      Add to your Discord
-    </button>
-  </div>
-  <div class="centered-text">
-    1. Add stackly to your server using the link above
-  </div>
-  <div class="centered-text">
-    2. Provide stackly with the game, time, and minimum players
-    <img id="splash_img_1" src="splash_img_1.png">
-  </div>
-  <div class="centered-text">
-    3. Stackly will let you know when your game is ready!
-    <img id="splash_img_2" src="splash_img_2.png">
-  </div>
-  </main>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="scripts.js"></script>
 
 </body>
 </html>

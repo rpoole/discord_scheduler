@@ -8,9 +8,15 @@ body {
     background-image:url(bg.svg);
     font-family: 'Roboto Mono', monospace;
     color: #ffffff;
-    line-height:1.6;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: normal;
 }
 
 /* HEADER BAR */
@@ -129,6 +135,85 @@ header {
     transform: translateY(-8px) rotate(-45deg);
 }
 
+/* CONTACT FORM */
+#contact-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-image:url(bg.svg);
+    background-color: rgba(3, 3, 3, 0.98); 
+    z-index: 2;
+}
+
+#contact-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(3, 3, 3, 0.98); 
+    opacity: .6; 
+  }
+
+#contact-form {
+    position: fixed;
+    width: 80%;
+    max-width: 400px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color:  #53bc4a;
+    opacity: 1;
+    padding-bottom: 0.35rem;
+}
+
+.contact-input {
+    display: block;
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto 1.25rem auto;
+    outline: 0;
+    border: none;
+    width: 80%;
+    padding: 0.2rem;
+    resize: none;
+}
+
+input {
+    height: 1.4rem;
+}
+
+textarea {
+    height: 5rem;
+}
+
+#contact-close {
+    position: absolute;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+	-webkit-border-radius: 50%;
+    border-radius: 50%;
+    line-height: 40px;
+    top: -22px;
+    right:-22px;
+    background-color:  rgb(234, 234, 22);
+    color: #53bc4a;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+#contact-close:hover{   
+    -webkit-box-shadow: inset 2px 1px 0px 20px rgba(83, 188, 74, 0.2);
+    -moz-box-shadow: inset 2px 1px 0px 20px rgba(83, 188, 74, 0.2);
+    box-shadow: inset 2px 1px 0px 20px rgba(83, 188, 74, 0.2);
+  }
+
 /* SCHEDULE PERSON AND BUTTON */
 .top-container {
     display: -webkit-box;
@@ -174,6 +259,11 @@ button {
     line-height: 3.5rem;
     padding: 0 0.75rem 0 4.5rem;
     box-shadow: #434ec5 0px 7px 5px -6px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
 }
 
 /* TEXT */
