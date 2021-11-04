@@ -2,15 +2,8 @@ $(".menu-toggle").click(function(){
     $(".links").toggleClass("mobile-nav");
     $(this).toggleClass("is-active");
  });
- 
 
-//  Check for valid email syntax
-// function validateEmail(email) {
-//     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//     return re.test(email);
-//   }
-
-$(function() {
+/*$(function() {
   
     // contact form animations
     $("#contact").click(function() {
@@ -32,4 +25,4 @@ $(function() {
       }
     });
     
-  });
+  });*/
